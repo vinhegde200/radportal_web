@@ -1,0 +1,14 @@
+<div id="_topbar_common" class="cls-topbar">
+    @if (branding != null) {
+        <img [src]="branding.logosmall" class="cls-logo-small">
+    }
+    <span id="_topbar-title-text" class="cls-topbar-title">{{title}}</span>
+    <div id="_topbar-avatar" class="cls-avatar">
+        <p-avatar [label]="avatarLabel" styleClass="mr-2" 
+            [style]="{ 'background-color': '#9c27b0', color: '#ffffff' }" shape="circle" 
+            (click)="menu.toggle($event)">
+        </p-avatar>
+    </div>
+</div>
+
+<p-menu #menu [model]="items" [popup]="true"></p-menu>

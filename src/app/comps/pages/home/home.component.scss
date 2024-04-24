@@ -1,0 +1,35 @@
+.cls-maincontainer {
+    width: 100%;
+    .cls-branding-logo {
+        width: 40%;
+        max-width: 200px;
+        margin: 0px auto;
+        margin-top: 5%;
+        img {
+            width: 100%;
+        }
+    }
+
+    .cls-introtext {
+        width: 70%;
+        margin: 0px auto;
+    }
+
+    .cls-button-login {
+        width: 300px;
+        margin: 0px auto;
+        margin-top: 50px;
+    }
+
+    .cls-action-button {
+        width: 300px;
+        margin: 0px auto;
+        margin-top: 50px;
+    }
+
+    .cls-logged-in {
+        width: 90%;
+        margin: 0px auto;
+        text-align: center;
+    }
+}

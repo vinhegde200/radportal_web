@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #eef1f5;
+    margin: 0px;
+}
+.c-form-field {
+    margin-bottom: 5px;
+    label {
+        display: block;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+    input {
+        padding: 0.5rem 0.5rem;
+        width: 100%;
+    }
+}
+
+.c-button-row {
+    margin-top: 10px;
+}
+
+.mainarea-container {
+    display: block;
+    // width: calc(100% - (var(--marginpaddingacross) * 2));
+    // min-height: calc(100% - (var(--marginpaddingacross) * 2));
+    margin: 0 auto;
+}
+
+.c-btn-full-width {
+    width: 100%;
+    padding: 6px 10px;
+}
+
+.c-msg-row {
+    color: red;
+    margin-top: 10px;
+}

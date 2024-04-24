@@ -1,0 +1,36 @@
+.c-login-container1 {
+    width: 500px;
+    height: 400px;
+    padding: 20px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    margin: 0px auto;
+    margin-top: calc(100vh / 2 - 200px);
+}
+
+.c-login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 75%;
+    max-width: 800px;
+    position: relative;
+    left: -12px;
+    background-color: #fff;
+    margin: 0px auto;
+    margin-top: calc(100vh/2 - 150px);
+    border: 1px solid lightgrey;
+    padding: 20px;
+    border-radius: 10px;
+
+    .c-left-login {
+        width: 50%;
+    }
+
+    .c-right-login {
+        width: 50%;
+        border-left: 1px solid lightgrey;
+        padding-left: 20px;
+    }
+}

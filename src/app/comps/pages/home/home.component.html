@@ -1,0 +1,27 @@
+<div id="_home_main_container" class="cls-maincontainer">
+    @if (branding != null) {
+        <div id="_branding_logo" class="cls-branding-logo">
+            <img [src]="branding.logolarge">
+        </div>
+        <div id="_branding_introtext" class="cls-introtext">
+            <p id="_branding_introtext_p" [innerHtml]="branding.introtext"></p>
+        </div>
+    }
+    @if (!this.loggedIn) {
+        <div id="_button_login" class="cls-button-login">
+            <button pButton pRipple label="Login to continue" id="_login-button"
+                class="c-btn-full-width" (click)="evtLogin()">
+            </button>
+        </div>
+    }
+    @if (this.loggedIn) {
+        <div class="_id_logged_in" class="cls-logged-in">
+            <h3>You are logged in now.</h3>
+            <div class="cls-action-button">
+                <button pButton pRipple label="Show me my orders" id="_login-button"
+                    class="c-btn-full-width">
+                </button>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,13 @@
+<main class="mainarea-container">
+  <div class="cls-top">
+    <app-topbar [company]="company" [branding]="branding" [user]="user" (logout)="logoutUser()"></app-topbar>
+  </div>
+  <div class="cls-bottom">
+    <div class="cls-left">
+      <app-leftpane></app-leftpane>
+    </div>
+    <div class="cls-main">
+      <router-outlet />
+    </div>
+  </div>
+</main>

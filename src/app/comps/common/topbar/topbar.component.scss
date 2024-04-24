@@ -1,0 +1,22 @@
+.cls-topbar {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+
+    .cls-topbar-title {
+        padding-left: 10px;
+        font-size: 20px;
+        width: 100%;
+    }
+
+    .cls-logo-small {
+        height: 50px;
+    }
+
+    .cls-avatar {
+        padding-right: 20px;
+        cursor: pointer;
+    }
+}

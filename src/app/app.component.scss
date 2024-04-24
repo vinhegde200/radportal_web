@@ -1,0 +1,19 @@
+.clas-top {
+    display: block;
+    width: 100%;
+    height: 50px;
+}
+.cls-bottom {
+    display: flex;
+    .cls-left {
+        padding-top: 20px;
+        width: 50px;
+        border-right: 1px solid lightgrey;
+        height: calc(100vh - 50px);
+    }
+
+    .cls-main {
+        padding: 20px;
+        width: 100%;
+    }
+}
