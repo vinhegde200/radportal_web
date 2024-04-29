@@ -16,6 +16,7 @@ import { SsoService } from '../../../sso/sso.service';
 export class HomeComponent implements OnInit {
   company: ConsumerCompany | undefined;
   branding: Branding | undefined;
+  compname: string | undefined;
 
   // View Binding variables
   loggedIn: boolean = false;
@@ -27,12 +28,14 @@ export class HomeComponent implements OnInit {
       if (p.company) {
         this.loadCompany(p.company);
         this.loadBranding(p.company);
+        this.compname = p.company;
+        localStorage.setItem('_company', p.company);
       }
     });
 
     const logindone = this.actRoute.snapshot?.queryParamMap?.get('logindone');
     if (logindone) {
-      this.router.navigate(['home', 'nestle']);
+      this.router.navigate(['home', this.compname]);
     }
     this.loggedIn = this.sso.isLoggedIn();
 
@@ -40,7 +43,7 @@ export class HomeComponent implements OnInit {
 
     if (!this.loggedIn && !logindone) {
       this.sso.login({
-        redirectUri: 'http://localhost:4200/#/home/nestle?logindone=true',
+        redirectUri: `http://localhost:4200/#/home/${this.compname}?logindone=true`,
         prompt: 'none'
       });
     } else if (this.loggedIn) {
@@ -95,6 +98,6 @@ export class HomeComponent implements OnInit {
   async evtLogin() {
     await this.sso.login({
       redirectUri: window.location.origin + '/#/home/' + this.company?.name,
-    });
+    }, this.company?.name);
   }
 }

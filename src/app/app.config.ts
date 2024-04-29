@@ -14,12 +14,6 @@ export const appConfig: ApplicationConfig = {
     KeycloakService,
     provideRouter(routes, withHashLocation()),
     provideHttpClient(withInterceptors([demoInterceptor])),
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: initializeKeycloak,
-    //   multi: true,
-    //   deps: [ KeycloakService, HttpClient ],
-    // },
     {
       provide: APP_INITIALIZER,
       useFactory(sso: SsoService) {

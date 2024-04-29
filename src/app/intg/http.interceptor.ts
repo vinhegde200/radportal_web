@@ -6,7 +6,7 @@ import { SsoService } from '../sso/sso.service';
 export const demoInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
     const keySer = inject(SsoService);
 
-    if (req.url != "/api/global/configurations") {
+    if (req.url != "/api/global/configurations123") {
         return from (keySer.getToken()).pipe(mergeMap((token: string) => {
             const authReq = req.clone({
                 setHeaders: {

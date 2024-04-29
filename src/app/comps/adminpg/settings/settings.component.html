@@ -1,0 +1,19 @@
+<div class="cls-config">
+    <div id="_id-config-row-hdr" class="cls-config-row">
+        <div class="cls-key">
+            Key
+        </div>
+        <div class="cls-value">
+            Value
+        </div>
+        <div class="cls-secret">
+            Secret
+        </div>
+    </div>
+    <app-row *ngFor="let c of configs" [config]="c"></app-row>
+</div>
+<div class="c-button-row">
+    <button pButton pRipple label="Save" id="_save-settings-button" (click)="saveSettings()"
+        class="p-button-success">
+    </button>
+</div>

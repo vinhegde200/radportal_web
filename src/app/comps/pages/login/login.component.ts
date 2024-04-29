@@ -5,7 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { AccessService } from '../../../services/access.service';
 import { ApiResponse, AppUserData } from '../../../model/access.model';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SsoService } from '../../../sso/sso.service';
 
 @Component({
@@ -18,12 +18,17 @@ import { SsoService } from '../../../sso/sso.service';
 })
 export class LoginComponent implements OnInit {
   constructor(private as: AccessService,
-    private readonly keyService: SsoService, private router: Router) {
+    private readonly keyService: SsoService,
+    private router: Router,
+    private actRoute: ActivatedRoute) {
     this.loginForm.valueChanges.subscribe({
       next: (res: any) => {
         this.resetMessage();
       }
-    })
+    });
+    this.actRoute.params.subscribe((p: any) => {
+      this.companyName = p.company;
+    });
   }
   loginForm = new FormGroup({
     loginid: new FormControl('', Validators.required),
@@ -32,23 +37,25 @@ export class LoginComponent implements OnInit {
   errormsg: string | undefined;
   loginSuccess: boolean = false;
 
-  ngOnInit(): void {
-      if (this.keyService.isLoggedIn()) {
-        this.router.navigate(['home', 'nestle']);
-      }
+  companyName: string | undefined;
+
+  redirectUrl: string | null = null;
+
+  ngOnInit(): void {      
+      this.redirectUrl = this.actRoute.snapshot.queryParamMap.get('redirect');
+      console.log('Redirect is ', this.redirectUrl);
   }
   login() {
     this.errormsg = undefined;
     if (this.loginForm.valid) {
       let loginid = this.loginForm.get('loginid')?.value;
       let password = this.loginForm.get('password')?.value;
-      this.as.login(loginid || '', password || '')
+      this.as.login(loginid || '', password || '', this.companyName || '')
       .subscribe({
         next: (res: any) => {
           this.handleLoginResponse(res as ApiResponse<AppUserData>);
         },
         error: (err: any) => {
-          console.log(err);
           this.handleLoginError(err);
         }
       });
@@ -56,11 +63,13 @@ export class LoginComponent implements OnInit {
   }
 
   handleLoginResponse(res: ApiResponse<AppUserData>) {
-    console.log(res);
     if (res.data.accesstoken != null && 
       res.data.roles != null && 
       res.data.roles.length > 0) {
         this.loginSuccess = true;
+        if (this.redirectUrl) {
+          window.location.href = this.redirectUrl;
+        }
     }
   }
 

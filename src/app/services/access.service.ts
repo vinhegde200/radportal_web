@@ -14,8 +14,12 @@ export class AccessService {
 
     }
 
-    login(loginid: string, password: string) {
-        return this.http.post("/api/access/login", {loginid, password});
+    login(loginid: string, password: string, company: string) {
+        return this.http.post("/api/access/login", {loginid, password, company});
+    }
+
+    logout() {
+        return this.http.get("/api/access/logout");
     }
 
     validateUser() {
