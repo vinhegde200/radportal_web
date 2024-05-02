@@ -7,11 +7,12 @@ import { ApiResponse, AppUserData } from '../../../model/access.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SsoService } from '../../../sso/sso.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [InputTextModule, ButtonModule, FormsModule, ReactiveFormsModule],
+  imports: [InputTextModule, ButtonModule, FormsModule, ReactiveFormsModule, TranslateModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   providers: [ AccessService, SsoService ]

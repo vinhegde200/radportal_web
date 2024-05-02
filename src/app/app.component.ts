@@ -5,6 +5,7 @@ import { LeftpaneComponent } from './comps/common/leftpane/leftpane.component';
 import { AccessService } from './services/access.service';
 import { AppUserData, Branding, ConsumerCompany } from './model/access.model';
 import { SsoService } from './sso/sso.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,9 @@ export class AppComponent {
   branding: Branding | undefined;
   company: ConsumerCompany | undefined;
   user: AppUserData | undefined;
-  constructor(private as: AccessService, private readonly keyService: SsoService) {
+  constructor(private as: AccessService,
+    private readonly keyService: SsoService,
+  private readonly txservice: TranslateService) {
     this.as.brandingSubject.subscribe(branding => {
       this.branding = branding;
     });
@@ -29,6 +32,9 @@ export class AppComponent {
     this.as.userSubject.subscribe(user => {
       this.user = user;
     });
+    this.txservice.addLangs(['en']);
+    this.txservice.setDefaultLang('en');
+    this.txservice.use('en');
   }
 
   logoutUser() {

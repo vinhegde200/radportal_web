@@ -1,0 +1,48 @@
+<div id="_id-txn-container">
+    <p-dropdown [options]="langs" (onChange)="langSelected($event)"
+        optionLabel="langstr" [showClear]="true" placeholder="Select Language" (onClear)="clearLang()">
+    </p-dropdown>
+    <span class="cls-new-lang">
+        <button pButton pRipple icon="pi pi-plus" [rounded]="true" label="New Lang"
+            [outlined]="true" (click)="showAddNewLang()">
+        </button>
+    </span>
+</div>
+
+<div class="cls-config">
+    @if (translations != undefined) {
+    <div id="_id-config-row-hdr" class="cls-tx-row">
+        <div class="cls-key">
+            Key
+        </div>
+        <div class="cls-value">
+            Value
+        </div>
+        <div class="cls-addnew">
+            <p-splitButton label="Add" (onClick)="addRow()" [model]="items"></p-splitButton>
+        </div>
+    </div>
+    }
+    @if(txjson != null && txjson.length > 0) {
+    <div class="cls-config-data">
+        <app-txrow *ngFor="let t of txjson" [txrow]="t"></app-txrow>
+    </div>
+    }
+</div>
+@if(txjson != null && txjson.length > 0) {
+<div class="c-button-row">
+    <button pButton pRipple label="Save" id="_save-settings-button" (click)="saveTranslations()"
+        class="p-button-primary">
+    </button>&nbsp;&nbsp;
+    <button pButton pRipple label="Export as Json" id="_save-settings-button" (click)="download()"
+        class="p-button-secondary">
+    </button>
+</div>
+}
+
+<input #fileinput class="cls-hide-element" type="file" />
+
+<p-dialog header="Add new language" [(visible)]="showAddLang" [modal]="true" 
+    [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <app-newlang (lang)="addLanguage($event)"></app-newlang>
+</p-dialog>

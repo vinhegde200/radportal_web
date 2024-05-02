@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Configuration } from "../model/config.model";
+import { Configuration, Translation } from "../model/config.model";
 
 @Injectable({providedIn: 'root'})
 export class SettingsService {
@@ -14,5 +14,17 @@ export class SettingsService {
 
     saveSettings(configs: Configuration[]) {
         return this.http.post("/api/global/configurations", configs);
+    }
+
+    getTranslations(lang: string) {
+        return this.http.get(`/api/global/translations/${lang}`);
+    }
+    
+    getLanguages() {
+        return this.http.get("/api/global/translationlangs");
+    }
+
+    saveLanguages(lang: string, langObj: Translation) {
+        return this.http.post(`/api/global/translations/${lang}`, langObj);
     }
 }

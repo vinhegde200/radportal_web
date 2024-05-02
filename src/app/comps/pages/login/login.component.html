@@ -13,9 +13,9 @@
                 <input id="_password" type="password" pInputText class="c-password" formControlName="password"/>
             </div>
             <div class="c-button-row">
-                <button pButton pRipple label="Login" id="_login-button"
+                <button pButton pRipple label="{{ 'login.login' | translate }}" id="_login-button"
                     [disabled]="!loginForm.valid"
-                    class="p-button-success c-btn-full-width" type="Submit">
+                    class="p-button-primary c-btn-full-width" type="Submit">
                 </button>
             </div>
             @if (errormsg) {

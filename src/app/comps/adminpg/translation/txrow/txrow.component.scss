@@ -1,4 +1,4 @@
-.cls-config-row {
+.cls-tx-row {
     width: 100%;
     display: flex;
     margin-bottom: 4px;
@@ -11,9 +11,6 @@
             width: 100%;
         }
         margin-right: 20px;
-        border: 1px solid lightgrey;
-        padding: 5px;
-        border-radius: 5px;
     }
     .cls-value {
         width: 30%;
@@ -22,18 +19,11 @@
         input {
             width: 100%;
         }
-        margin-right: 20px;
-        border: 1px solid lightgrey;
-        padding: 5px;
-        border-radius: 5px;
+        margin-right: 4px;
     }
-    .cls-secret {
-        width: 20%;
-        display: flex;
-        float: left;
+    .dirty {
         input {
-            width: 100%;
+            color: red;
         }
-        margin-right: 20px;
     }
 }

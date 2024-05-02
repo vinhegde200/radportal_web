@@ -1,0 +1,56 @@
+.cls-config {
+    margin-top: 20px;
+    .cls-tx-row {
+        width: 100%;
+        display: flex;
+        margin-bottom: 4px;
+
+        .cls-key {
+            width: 30%;
+            display: flex;
+            float: left;
+            input {
+                width: 100%;
+            }
+            margin-right: 20px;
+            border: 1px solid lightgrey;
+            padding: 5px;
+            border-radius: 5px;
+            line-height: 35px;
+        }
+        .cls-value {
+            width: 30%;
+            display: flex;
+            float: left;
+            input {
+                width: 100%;
+            }
+            margin-right: 20px;
+            border: 1px solid lightgrey;
+            padding: 5px;
+            border-radius: 5px;
+            line-height: 35px;
+        }
+        .cls-addnew {
+            width: 20%;
+            display: flex;
+            float: left;
+            input {
+                width: 100%;
+            }
+            margin-right: 20px;
+        }
+    }
+    .cls-config-data {
+        height: calc(100vh - 300px);
+        overflow: auto;
+    }
+}
+
+.cls-new-lang {
+    margin-left: 10px;
+}
+
+.cls-hide-element {
+    display: none;
+}
