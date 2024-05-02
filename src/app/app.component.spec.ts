@@ -2,12 +2,23 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { provideHttpClient } from '@angular/common/http';
 import { SsoService } from './sso/sso.service';
+import { MissingTranslationHandler, TranslateCompiler, TranslateLoader, TranslateModule, TranslateParser, TranslateService, TranslateStore, USE_DEFAULT_LANG } from '@ngx-translate/core';
+import { KeycloakService } from 'keycloak-angular';
+import { MockTranslationLoader } from './PortalTranslateLoader';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
-      providers: [provideHttpClient(), SsoService]
+      imports: [AppComponent, TranslateModule.forRoot()],
+      providers: [
+        { 
+          provide: USE_DEFAULT_LANG,
+          useValue: 'EN'
+        },
+        provideHttpClient(), 
+        KeycloakService,
+        SsoService
+        ]
     }).compileComponents();
   });
 

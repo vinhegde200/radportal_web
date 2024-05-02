@@ -68,7 +68,7 @@ export class SsoService {
             this.keycloak.login(options);
         } else {
             if (options.prompt == 'none') {
-                window.location.href = options.redirectUri;
+                this.doRedirect(options.redirectUri);
             } else {
                 this.router.navigate(['login', company], { queryParams: {redirect: options.redirectUri}});
             }
@@ -82,7 +82,7 @@ export class SsoService {
             this.http.get("/api/access/logout")
             .subscribe({
                 next: (res: any) => {
-                    window.location.href = url;
+                    this.doRedirect(url);
                 }
             });
         }
@@ -104,5 +104,10 @@ export class SsoService {
     getCookieValue(name: string) {
         const val = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || '';
         return val; 
+    }
+
+    doRedirect(url: string) {
+        window.location.href = url;
+        return true;
     }
 }

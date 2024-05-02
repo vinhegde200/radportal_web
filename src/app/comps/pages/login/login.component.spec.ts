@@ -6,7 +6,9 @@ import { AccessService } from '../../../services/access.service';
 import { Observable, of, throwError } from 'rxjs';
 import { TestData } from '../../../testdata/access.data';
 import { By } from '@angular/platform-browser';
-
+import { KeycloakService } from 'keycloak-angular';
+import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -14,8 +16,8 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LoginComponent],
-      providers: [provideHttpClient()]
+      imports: [LoginComponent, RouterModule.forRoot([]), TranslateModule.forRoot()],
+      providers: [provideHttpClient(), KeycloakService, ]
     })
     .compileComponents();
     

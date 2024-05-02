@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewlangComponent } from './newlang.component';
+import { TranslateLoader, TranslateService, TranslateStore } from '@ngx-translate/core';
 
 describe('NewlangComponent', () => {
   let component: NewlangComponent;
@@ -8,7 +9,8 @@ describe('NewlangComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NewlangComponent]
+      imports: [NewlangComponent],
+      providers: [TranslateStore, TranslateLoader, TranslateService]
     })
     .compileComponents();
     

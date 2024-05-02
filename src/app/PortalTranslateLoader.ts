@@ -13,3 +13,9 @@ export class PortalTranslateLoader implements  TranslateLoader {
             }));
     }
 }
+
+export class MockTranslationLoader implements TranslateLoader {
+    getTranslation(lang: string): Observable<any> {
+        return of ({});
+    }
+}

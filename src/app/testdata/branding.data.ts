@@ -1,41 +1,53 @@
-import { AppUserData, Branding, ConsumerCompany } from "../model/access.model";
+import { ApiResponse, AppUserData, Branding, ConsumerCompany } from "../model/access.model";
 
 export class BrandingTestData {
-    comp_title: ConsumerCompany = {
-        title: "Testing Company"
+    comp_title: ApiResponse<ConsumerCompany> = {
+        data: {
+            title: "Testing Company"
+        }
     }
 
-    comp_name: ConsumerCompany = {
-        name: "Testing Company Name"
+    comp_name: ApiResponse<ConsumerCompany> = {
+        data: {
+            name: "Testing Company Name"
+        }
     }
 
-    comp: ConsumerCompany = {
-        id: 1,
-        name: "Test Company",
-        title: "Test Company Title",
-        website: "testwebsite.com",
-        domain: "testsite.com"
+    comp: ApiResponse<ConsumerCompany> = {
+        data: {
+            id: 1,
+            name: "Test Company",
+            title: "Test Company Title",
+            website: "testwebsite.com",
+            domain: "testsite.com"
+        }
     }
 
-    branding: Branding = {
-        introtext: "This is company intro text"
+    branding: ApiResponse<Branding> = {
+        data: {
+            introtext: "This is company intro text"
+        }
     }
 
-    user: AppUserData = {
-        username: "Demo User"
+    user: ApiResponse<AppUserData> = {
+        data: {
+            username: "Demo User"
+        }
     }
 
-    user_1: AppUserData = {
-        id: 1,
-        username: "Demo User",
-        email: "demo@test.com",
-        roles: [
-            {
-                name: "admin"
-            },
-            {
-                name: "user"
-            }
-        ]
+    user_1: ApiResponse<AppUserData> = {
+        data: {
+            id: 1,
+            username: "Demo User",
+            email: "demo@test.com",
+            roles: [
+                {
+                    name: "admin"
+                },
+                {
+                    name: "user"
+                }
+            ]
+        }
     }
 }

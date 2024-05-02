@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TranslationComponent } from './translation.component';
+import { SettingsService } from '../../../services/settings.service';
+import { provideHttpClient } from '@angular/common/http';
+import { MissingTranslationHandler, TranslateCompiler, TranslateLoader, TranslateModule, TranslateParser, TranslateStore } from '@ngx-translate/core';
 
 describe('TranslationComponent', () => {
   let component: TranslationComponent;
@@ -8,7 +11,9 @@ describe('TranslationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TranslationComponent]
+      imports: [TranslationComponent, TranslateModule.forRoot()],
+      providers: [provideHttpClient(),
+        SettingsService]
     })
     .compileComponents();
     

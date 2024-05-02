@@ -19,7 +19,6 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class LoginComponent implements OnInit {
   constructor(private as: AccessService,
-    private readonly keyService: SsoService,
     private router: Router,
     private actRoute: ActivatedRoute) {
     this.loginForm.valueChanges.subscribe({

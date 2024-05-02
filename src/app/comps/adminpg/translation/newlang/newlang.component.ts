@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslateService, TranslateStore } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { Translation } from '../../../../model/config.model';
@@ -9,6 +9,7 @@ import { Translation } from '../../../../model/config.model';
   selector: 'app-newlang',
   standalone: true,
   imports: [InputTextModule, ButtonModule, FormsModule, ReactiveFormsModule, TranslateModule],
+  providers: [TranslateStore, TranslateService],
   templateUrl: './newlang.component.html',
   styleUrl: './newlang.component.scss'
 })

@@ -8,6 +8,8 @@ import { of } from 'rxjs';
 import { BrandingTestData } from '../../../testdata/branding.data';
 import { By } from '@angular/platform-browser';
 import { SsoService } from '../../../sso/sso.service';
+import { KeycloakService } from 'keycloak-angular';
+import { MockSsoService } from '../../../testdata/mock-services/mock.sso.service';
 
 const params = {
   get: function() {}
@@ -22,7 +24,12 @@ describe('HomeComponent', () => {
       imports: [HomeComponent, RouterModule.forRoot([])],
       providers: [
         provideHttpClient(),
-        SsoService,
+        KeycloakService,
+        AccessService,
+        {
+          provide: SsoService,
+          useClass: MockSsoService
+        },
         {
           provide: ActivatedRoute,
           useValue: {
@@ -35,6 +42,8 @@ describe('HomeComponent', () => {
     .compileComponents();
     
     fixture = TestBed.createComponent(HomeComponent);
+    let service = fixture.debugElement.injector.get(SsoService);
+
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -51,6 +60,7 @@ describe('HomeComponent', () => {
     const company = btd.comp;
     const branding = btd.branding;
     const user = btd.user_1;
+  
     spyOn(service, "getCompany").and.callFake(() => {
       return of(company)
     });
@@ -65,10 +75,12 @@ describe('HomeComponent', () => {
     comp.loadCompany('nestle');
     comp.loadBranding('nestle');
     fixture.detectChanges();
-
     flush();
+
+    expect(comp.branding).toBeTruthy();
+    expect(comp.branding?.introtext).toBe(branding.data.introtext);
     
     const introtext = fixture.debugElement.query(By.css('#_branding_introtext_p')).nativeElement.innerText;
-    expect(introtext).toBe(branding.introtext);
+    expect(introtext).toBe(branding.data.introtext);
   }));
 });
