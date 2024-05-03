@@ -59,6 +59,7 @@ export class HomeComponent implements OnInit {
     this.as.getCompany(compName)
     .subscribe({
       next: (comp: any) => {
+        console.log('Company is loaded');
         this.company = comp.data as ConsumerCompany;
         this.as.companySubject.next(this.company);
         this.as.companySubject.complete();
