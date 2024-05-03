@@ -2,7 +2,10 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
 name: Radius Portal Build (Angular)
-
+permissions:   
+  contents: read
+  pages: write
+  id-token: write
 on:
   push:
     branches: [ "main" ]
