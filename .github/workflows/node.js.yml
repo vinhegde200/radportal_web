@@ -29,14 +29,16 @@ jobs:
     - run: npm install
     - run: npm run build --if-present
     - run: npm test -- --watch=false --browsers=ChromeHeadless --code-coverage
+    - run: npm test -- --watch=false --browsers=ChromeHeadless
 
     - name: Coverage report
       uses: eleboys/test-coverage-report-action@v1.0.2
       id: report
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        path: coverage/coverage-summary.json
+        path: coverage/rportal/coverage-summary.json
         title: Karma Test Coverage
 
     - name: Print the output summary
       run: echo "Report coverage json ${{ steps.report.outputs.summary }}"
+

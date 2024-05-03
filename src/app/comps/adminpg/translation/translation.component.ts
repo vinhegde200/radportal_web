@@ -33,7 +33,7 @@ export class TranslationComponent implements OnInit {
 
   constructor(private ss: SettingsService) {}
   ngOnInit(): void {
-    // this.getLanguages();
+    this.getLanguages();
     const _parent = this;
     this.items = [
       {
