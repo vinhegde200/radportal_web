@@ -30,15 +30,23 @@ jobs:
     - run: npm run build --if-present
     - run: npm test -- --watch=false --browsers=ChromeHeadless
 
-    - name: Coverage report
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action/linux@v2
       if: always()
-      uses: eleboys/test-coverage-report-action@v1.0.2
-      id: report
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        path: coverage/rportal/coverage-summary.json
-        title: Karma Test Coverage
-
-    - name: Print the output summary
-      run: echo "Report coverage json ${{ steps.report.outputs.summary }}"
+        files: |
+          test-results/**/*.xml
+          test-results/**/*.trx
+          test-results/**/*.json
+#    - name: Coverage report
+#      if: always()
+#      uses: eleboys/test-coverage-report-action@v1.0.2
+#      id: report
+#      with:
+#        token: ${{ secrets.GITHUB_TOKEN }}
+#        path: coverage/rportal/coverage-summary.json
+#        title: Karma Test Coverage
+#
+#    - name: Print the output summary
+#      run: echo "Report coverage json ${{ steps.report.outputs.summary }}"
 
