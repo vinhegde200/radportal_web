@@ -46,5 +46,5 @@ jobs:
       if: always()
       with:
         files: |
-          coverage/**/*.json
+          reports/*.xml
 
