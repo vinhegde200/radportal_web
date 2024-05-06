@@ -8,6 +8,7 @@ permissions:
   repository-projects: write
   pages: write
   id-token: write
+  checks: write
 on:
   push:
     branches: [ "main" ]
