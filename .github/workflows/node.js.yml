@@ -41,15 +41,10 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         path: coverage/rportal/coverage-summary.json
         title: Karma Test Coverage
-#    - name: Coverage report
-#      if: always()
-#      uses: eleboys/test-coverage-report-action@v1.0.2
-#      id: report
-#      with:
-#        token: ${{ secrets.GITHUB_TOKEN }}
-#        path: coverage/rportal/coverage-summary.json
-#        title: Karma Test Coverage
-#
-#    - name: Print the output summary
-#      run: echo "Report coverage json ${{ steps.report.outputs.summary }}"
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action/linux@v2
+      if: always()
+      with:
+        files: |
+          coverage/**/*.json
 
