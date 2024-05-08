@@ -58,6 +58,7 @@ jobs:
       with:
         report_paths: '**/reports/*.xml'
         include_passed: true
+        detailed_summary: true
 
 #    - name: Comment Test Coverage
 #      uses: AthleticNet/comment-test-coverage@1.1
