@@ -60,6 +60,13 @@ jobs:
         include_passed: true
         detailed_summary: true
 
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: |
+          reports/*.xml
+
 #    - name: Comment Test Coverage
 #      uses: AthleticNet/comment-test-coverage@1.1
 #      with:
